@@ -52,3 +52,56 @@ a = String(); // ""
 
 ```
 
+# Coersion
+
+```javascript
+// Convert to string
+// first toString() then valueOf()
+var a;
+a = String(null); // "null"
+a = String(undefined); // "undefined"
+a = String(true); // "true"
+a = String(false); // "false"
+a = String(-0); // "0"
+a = String([]); // ""
+a = String([1,2,3]); // "1,2,3"
+a = String([null, undefined]); // "," {ignores null and undefined}
+a = String([null, undefined, 1, , 3]); // ",,1,,3"
+a = String({}); // "[object Object]" 
+
+
+// Convert to number
+// first valueOf() then toString()
+var a;
+a = Number(""); // 0 {oops}
+a = Number("-0"); // -0 
+a = Number("  0056 "); // 56 {trims whitespaces and leading zeros}
+a = Number("0."); // 0
+a = Number(" .001"); // 0.001 {adds 0.} 
+a = Number("."); // NaN {only dots are invalid}
+a = Number(null); // 0 {oops}
+a = Number(undefined); // NaN 
+a = Number(true); // 1
+a = Number(false); // 0
+a = Number("true"); // NaN
+a = Number([]); // 0 { #1: first [] converts to "" then "" becomes 0}
+a = Number([""]); // 0 #1
+a = Number([null]); // 0 #1
+a = Number([undefined]); // 0 #1
+a = Number([1,2,3]); // NaN
+a = Number({}); // NaN
+
+// Convert to boolean
+// Falsy list: 0, -0, null, undefined, false, "", NaN
+// If the value is not on the falsy list then it is true
+var a;
+a = Boolean(0); // false 
+a = Boolean(null); // false
+a = Boolean(undefined); // false
+a = Boolean(false); // false
+a = Boolean(NaN); // false
+a = Boolean(""); // false
+a = Boolean("anything else"); // true
+
+```
+
