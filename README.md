@@ -46,7 +46,7 @@ a = Number(); // 0
 a = new Number(1);
 typeof a; // "object" {Hidden property [[PrimitiveValue]] holds 1}
 a = Number(1);
-typeof a; // "number" {call to Number() function coercers to number primitive}
+typeof a; // "number" {call to Number() function coerces to number primitive}
 a = Boolean(); // false
 a = String(); // ""
 
