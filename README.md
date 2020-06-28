@@ -105,3 +105,59 @@ a = Boolean("anything else"); // true
 
 ```
 
+# Equality
+
+```javascript
+
+// if the types match then == performs strict equality ===
+var word1 = "hello";
+var word2 = "hello";
+
+word1 == word2; // true
+word1 === word2; // true
+
+// double equals allows coersion only if the types are different and prefers to convert to number
+
+var x = null;
+var y = undefined;
+x == y; // true
+
+x = undefined;
+y = null;
+x == y; // true;
+
+x = 16;
+y = "16";
+x == y; // true
+
+x = true;
+y = 1;
+x == y; // true
+
+x = false;
+y = 0;
+x == y; // true
+
+x = 16;
+y = [16];
+x == y; // true {[16] => "16" => 16}
+
+// triple equals disallows coersion and returns false if the types are different
+
+x = "16"; 
+y = 16;
+x === y; // false
+
+x = -0;
+y = 0;
+x === y; // true
+
+x = {x: 2};
+y = {x: 2};
+x == y; // false
+
+x = {x: 2};
+y = x;
+x === y; // true;
+
+```
