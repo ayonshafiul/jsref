@@ -208,4 +208,42 @@ xyz(); // Reference Error
 
 abc; // Reference Error
 
+// var vs let
+
+function abc() {
+    try {
+        var a = 1;
+    } catch (err) {
+        var a = 2;
+    }
+    var a = 3; // redeclaring var is allowed
+    console.log(a);
+}
+abc();
+
+function abc() {
+    let a;
+    try {
+        let a = 1; // Syntax error
+    } catch (err) {
+        let a = 2;
+    }
+    let a = 3; // Syntax error {redeclaring let is dis allowed}
+    console.log(a);
+}
+
+abc();
+
+// let doesn't hoist
+
+// const
+
+{
+    const a = "HI";
+    const b = { x: 2};
+    b.x = 3; // allowed
+    a = 4; // TypeError
+}
+
+
 ```
