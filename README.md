@@ -161,3 +161,51 @@ y = x;
 x === y; // true;
 
 ```
+
+# Scope
+
+```javascript
+// lexical scope refers to the idea of scopes being nested inside each other and determined at compile time by the author
+
+// js is lexically scoped
+
+// js functions create new scopes
+
+function abc(word) {
+    console.log(word)
+    function xyz() {
+        console.log("Bye");
+    } // xyz is declared within the scope of abc
+    xyz();
+} // abc is declared in the global scope
+
+abc("Hi");
+xyz(); //Reference Error
+
+
+// function expression
+
+var abc = function xyz() {
+    console.log(abc);
+}
+xyz(); // Reference Error
+abc(); // works { #2 functions expressions do not pollute the enclosing scope }
+
+// scopes using IIFE
+
+(function xyz(word) {
+    console.log(word);
+})("HI"); // works because #2
+
+xyz(); // Reference Error
+
+// scopes using let or const inside Blocks
+
+{
+    let abc = "HI";
+    console.log(abc);
+}
+
+abc; // Reference Error
+
+```
