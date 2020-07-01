@@ -247,3 +247,17 @@ abc();
 
 
 ```
+
+# Hoisting
+
+
+```javascript
+var a = 'A';
+abc();
+
+function abc() {
+    console.log(a); // undefined
+    var a = 'AB';
+}
+
+```
