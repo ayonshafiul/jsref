@@ -463,3 +463,10 @@ yetAnotherInnerFunction(); // counter 2
 // only once, memoization, iterators, generators, module pattern, asynchronous js
 
 ```
+
+# Async
+
+```javascript
+
+
+```
