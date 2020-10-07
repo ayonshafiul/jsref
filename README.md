@@ -467,6 +467,48 @@ yetAnotherInnerFunction(); // counter 2
 # Async
 
 ```javascript
+// browser has additional functionalities that enable js to behave asynchronously
+// microtask queue, callback queue, timer, DOM, fetch()
+
+// callbacks
+
+function printHello() {
+  console.log("hello");
+}
+
+setTimer(printHello, 0);
+console.log("Hi");
+
+// Output: Hi then hello
+// printHello is added to the callback queue after timer is done
+// after executing all the synchronous code and if the call stack is empty
+// then the callback queue is cleared one by one
+
+// all of this is done by the event loop
+// event loop constantly checks if the call stack is empty or not
+// and whether all the global synchronous is finished executing
+// then it checks the callback queue for additional asynchronous task
+
+// Callback hell
+
+setTimeout(function firstTask(data) {
+  setTimeout(function secondTask(data){
+    setTimeout(function thirdTask(data){
+      setTimeout(function fourthTask(data){
+        setTimeout(function fifthTask(data){
+    
+        }, 100);
+      }, 100);
+    }, 100);
+  }, 100);
+}, 100);
+// here setTimeout is simulating any task that takes some time to finish
+// After firstTask is finished and gets back the data from somewhere
+// secondTask uses that data and does its job then it's data is used by thirdTask
+// this list goes on
+// this is called callback hell because of nesting functionality inside another
+// function reduces readability and any error occuring at any point is hard to debug
+
 
 
 ```
