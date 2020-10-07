@@ -388,4 +388,44 @@ const user1 = new crateUser("Raheem Sterling", 24, 100000);
 const user2 = new createUser("Robert Lewandowski", 31, 500000);
 user1.increaseSalary(50000);
 user2.increaseSalary(100000);
+
+
+
+```
+# Higher Order function
+
+```javascript
+// the function below receives functionality as an input
+// the function that accepts other function is a higher order function
+// higher order functions take other functions as callbacks
+
+copyArrayAndManipulate(array, instructions) {
+  const output = [];
+  for (let i = 0; i < array.length; i++) {
+    output.push(instructions(array[i]));
+  }
+  return output;
+}
+
+function squareRoot(num) {
+  return Math.sqrt(num);
+}
+
+function addOne(num) {
+  return num + 1;
+}
+
+const myArray = [1, 4, 9, 25];
+const sqrtArray = copyArrayAndManipulate(myArray, squareRoot);
+const incArray = copyArrayAndManipulate(myArray, addOne);
+const decArray = copyArrayAndManipulate(myArray, num => num -1);
+// any function, array or object are passed by reference in javascript
+
+// Arrow functions with a single parameter and single statement 
+// can be reduced further
+
+const addTwo = (num) => { return num + 2;}
+const addTwo = (num) => num + 2; // automatically returns this single statement
+const addTwo = num => num + 2; // can skip the parentheses for a single parameter
+
 ```
