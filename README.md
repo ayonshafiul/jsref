@@ -429,3 +429,37 @@ const addTwo = (num) => num + 2; // automatically returns this single statement
 const addTwo = num => num + 2; // can skip the parentheses for a single parameter
 
 ```
+
+# Closure
+
+```javascript
+// when a fuction is returned from inside of another function
+// it bundles all the lexically scoped data with it inside the hidden [[Sope]] property
+// this behavior is known as closure
+// incCounter has closure second in the below example
+
+
+function second() {
+  let counter = 0;
+  function incCounter() {
+    counter++;
+  }
+  return incCounter;
+}
+
+const innerFunction = second();
+innerFunction(); // counter 1
+innerFunction(); // counter 2
+
+const yetAnotherInnerFunction = second();
+yetAnotherInnerFunction(); // counter 1
+yetAnotherInnerFunction(); // counter 2
+
+// although counter is destroyed when second() finishes executing
+// innerFunction has a reference to it so it is stored inside innerFunctions
+// hidden [[Scope]] property aka backpack of data
+
+// useful scenarios for using clousre, creating functions that can be called
+// only once, memoization, iterators, generators, module pattern, asynchronous js
+
+```
