@@ -548,3 +548,36 @@ console.log('hi');
 // so these are chainable
 
 ```
+# Iterators
+
+```javascript
+
+// iterators are handy tools that turns a collection into a stream of data
+// then the data is returned one after another
+// a new way to access all the elements one after another explicitly writing code to // access these data
+// an iterator can be implemented by using closures as the iterators must remember previous state
+
+function iterator(array) {
+  let counter = 0;
+  function next() {
+    let element = array[i];
+    i++;
+    return element;
+  }
+  return next;
+}
+const nextElement = iterator([1,2,3,4]);
+nextElement(); // 1
+nextElement(); // 2
+nextElement(); // 3
+nextELement(); // 4
+
+// the next function has bundled data with it when it is returned from iterator
+// namely counter and the array reference to the original array
+// the returned function is assigned to nextElement label on the global scope
+// then each time nextElement() is called
+// counter in the bundled data is increased
+// and the next element is returned
+
+
+```
