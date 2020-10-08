@@ -510,5 +510,41 @@ setTimeout(function firstTask(data) {
 // function reduces readability and any error occuring at any point is hard to debug
 
 
+// promise
+
+function printHello() {
+  console.log("Hello");
+}
+
+function display(data) {
+  console.log(data);
+}
+setTimeout(printHello, 0);
+
+for ( let i = 0; i < 10000000; i++) {
+  console.log(i);
+}
+
+const response = fetch('http://somedata');
+response.then(display);
+
+console.log('hi');
+
+// the order of output: first 10000000 logs -> hi -> data (if it takes less time
+// than 10000000 logs) -> Hello
+// promises immediately return a promise object with special properties unlike callbacks
+// some of these properties are value, hidden OnCompletion and OnRejection Array
+// when the data arrives the value is updated with the data
+// and functions in the OnCompletion Array gets automatically called one by one if 
+// the data is successfully received
+// or functions in the OnRejection Array gets automatically called one by one if 
+// there is an error receiving the data
+
+// to push a function in OnCompletion array the .then() function is called on the
+// promise object with the function as an argument
+// to push a function in OnRejection array the .catch() function is called on the 
+// promise object with the function as an argument 
+// both .then() and .catch() returns back the original promise object
+// so these are chainable
 
 ```
